@@ -3,14 +3,20 @@ export interface Order {
   size: number,
 }
 export interface ServerRespond {
+  price_abc: number,
+  price_def: number,
+  ratio: number,
+  timestamp: Date,  
+  upper_bound: number,
+  lower_bound: number,
+  trigger_alert: number|undefined,
   stock: string,
   top_bid: Order,
   top_ask: Order,
-  timestamp: Date,
 }
 
 class DataStreamer {
-  static API_URL: string = 'http://localhost:8080/query?id=1';
+  static API_URL: string = 'http://localhost:9090/query?id=1';
 
   static getData(callback: (data: ServerRespond[]) => void): void {
     const request = new XMLHttpRequest();
